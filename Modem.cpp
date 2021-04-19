@@ -21,6 +21,17 @@ void Modem::receive_byte(const uint8_t byte)
 {
     do
     {
+        /* control timeout, if yes, stop timer and counter = 0 */
+        uint32_t timeMs = chrono::duration_cast<chrono::milliseconds>(_timer.elapsed_time()).count();
+        if (timeMs > TIMEOUT_MS)
+        {
+            this->reset_receive();
+        }
+        else
+        {
+            _timer.reset();
+        }
+
         /* wait for start byte */
         if (_numReceived == 0) 
         {
@@ -32,19 +43,8 @@ void Modem::receive_byte(const uint8_t byte)
             break;
         }
 
-        /* control timeout, if yes, stop timer and counter = 0 */
-        uint32_t timeMs = chrono::duration_cast<chrono::milliseconds>(_timer.elapsed_time()).count();
-        if (timeMs > TIMEOUT_MS)
-        {
-            this->reset_receive();
-            break;
-        }
-        else
-        {
-            _timer.reset();
-        }
-        ++_numReceived;
 
+        ++_numReceived;
         /* control start message */
         if ( _numReceived <= sizeof(MODEM_MESSAGE_START))
         {
