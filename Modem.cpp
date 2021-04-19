@@ -97,7 +97,7 @@ void Modem::receive_byte(const uint8_t byte)
         /* Here payload stored */
         if (indexPayload == (_size - 1))
         {
-
+            /* control end header further */
         }
 
     } while (0);
