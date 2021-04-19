@@ -10,7 +10,7 @@ void Modem::reset_receive(void)
     _timer.stop();
     _numReceived = 0;
     _size = 0;
-    if (_pBuffer == nullptr)
+    if (_pBuffer != nullptr)
     {
         free(_pBuffer);
         _pBuffer = nullptr;
