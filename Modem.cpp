@@ -91,13 +91,12 @@ void Modem::receive_byte(const uint8_t byte)
         if (indexPayload < _size)
         {
             _pBuffer[indexPayload] = byte;
+            /* Here payload stored */
+            if (indexPayload == (_size - 1))
+            {
+                /* control end header further */
+            }
             break;
-        }
-
-        /* Here payload stored */
-        if (indexPayload == (_size - 1))
-        {
-            /* control end header further */
         }
 
     } while (0);
