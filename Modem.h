@@ -19,7 +19,7 @@ private:
 
 
     uint8_t* _pBuffer;
-    uint8_t _numReceived;
+    uint16_t _numReceived;
     uint16_t _size;
     Timer _timer;
 };
