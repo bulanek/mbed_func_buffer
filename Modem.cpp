@@ -8,6 +8,7 @@ Modem::Modem() : _pBuffer(nullptr), _numReceived(0), _size(0){}
 void Modem::reset_receive(void)
 {
     _timer.stop();
+    _timer.reset();
     _numReceived = 0;
     _size = 0;
     if (_pBuffer != nullptr)
@@ -42,7 +43,6 @@ void Modem::receive_byte(const uint8_t byte)
             }
             break;
         }
-
 
         ++_numReceived;
         /* control start message */
