@@ -18,13 +18,6 @@ private:
     void reset_receive(void);
 
 
-    enum class State
-    {
-        WAITING_START_BYTE,
-        NOT_WAITING_START_BYTE
-    } _state;
-
-
     uint8_t* _pBuffer;
     uint8_t _numReceived;
     uint16_t _size;
