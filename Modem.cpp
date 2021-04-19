@@ -29,8 +29,8 @@ void Modem::receive_byte(const uint8_t byte)
                 ++_numReceived;
                 _timer.start();
             }
+            break;
         }
-        break;
 
         /* control timeout, if yes, stop timer and counter = 0 */
         uint32_t timeMs = chrono::duration_cast<chrono::milliseconds>(_timer.elapsed_time()).count();
