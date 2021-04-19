@@ -88,7 +88,7 @@ void Modem::receive_byte(const uint8_t byte)
 
         /* Get payload data */
         uint16_t indexPayload = _numReceived-sizeof(MODEM_MESSAGE_START) - MODEM_LENGTH_HEADER_SIZE - 1;
-        if (indexPayload  < MAX_SIZE_PAYLOAD_BYTES)
+        if (indexPayload  < _size)
         {
             _pBuffer[indexPayload] = byte;
             break;
