@@ -3,7 +3,7 @@
 const uint8_t Modem::MODEM_MESSAGE_START[4] = {0xEA, 0xEA, 0xEA, 0xEA};
 const uint8_t Modem::MODEM_MESSAGE_END[4] = {0xEB, 0xEB, 0xEB, 0xEB};
 
-Modem::Modem() : _pBuffer(nullptr), _numReceived(0){}
+Modem::Modem() : _pBuffer(nullptr), _numReceived(0), _size(0){}
 
 void Modem::reset_receive(void)
 {
