@@ -79,7 +79,6 @@ void Modem::receive_byte(const uint8_t byte)
         if (indexPayload < payloadSize)
         {
             _pBuffer[indexPayload] = byte;
-            /* Here payload + crc stored */
             break;
         }
 
@@ -112,8 +111,8 @@ void Modem::receive_byte(const uint8_t byte)
             if (byte != MODEM_MESSAGE_END[indexEnd])
             {
                 this->reset_receive();
+                break;
             }
-
             if (indexEnd == (sizeof(MODEM_MESSAGE_END) - 1))
             {
                 /* TODO here end of the whole expected buffer. Now reseting */
