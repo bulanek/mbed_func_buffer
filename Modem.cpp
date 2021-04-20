@@ -155,7 +155,7 @@ bool Modem::compute_crc32(uint32_t& crc)
             this->reset_receive();
             break;
         }
-        if (_crc32.compute_partial(reinterpret_cast<const void *>(&_pBuffer), payloadSize, &crc) != 0)
+        if (_crc32.compute_partial(reinterpret_cast<const void *>(_pBuffer), payloadSize, &crc) != 0)
         {
             retVal = false;
 
