@@ -17,9 +17,13 @@ private:
 
     void reset_receive(void);
 
+    bool compute_crc32(uint32_t& crc);
+
 
     uint8_t* _pBuffer;
     uint16_t _numReceived;
-    uint16_t _size;
+    uint16_t _size;         /**< Received size */
+    uint32_t _crc;          /**< Received crc. */
     Timer _timer;
+    MbedCRC<POLY_32BIT_ANSI, 32> _crc32;
 };
